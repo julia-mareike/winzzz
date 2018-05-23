@@ -1,3 +1,11 @@
+.app-container{
+  text-align: center;
+}
+.tangata{
+  display: flex;
+  justify-content: center
+}
+
 .tangata input{
   display:none;
   margin:0;
@@ -20,7 +28,7 @@
   cursor:pointer;
   background-size:contain;
   background-repeat:no-repeat;
-  display:inline-block;
+  display:inline-flex;
   width:190px;height:190px;
   -webkit-transition: all 120ms ease-in;
      -moz-transition: all 120ms ease-in;
@@ -31,12 +39,13 @@
 }
 
 .label:hover{
-  width:200px;height:200px;
+  transform: scale(1.1);
   -webkit-filter: brightness(1.2) opacity(.7);
      -moz-filter: brightness(1.2) opacity(.7);
           filter: brightness(1.2) opacity(.7)
 }
 
+.jobseeker {width:200px;height:200px}
 .single {background:url(single.png)}
 .partner{background:url(partner.png)}
 .kids{background:url(kids.png)}
