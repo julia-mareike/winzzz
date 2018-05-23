@@ -6,6 +6,12 @@
 
 .nokids{background:url(nokids.png)}
 
+.under20{background:url(18to19.png)}
+
+.early20s{background:url(20to24.png)}
+
+.late20splus{background:url(25plus.png)}
+
 .tangata input{
   display:none;
   margin:0;
