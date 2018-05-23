@@ -1,0 +1,46 @@
+.single {background:url(single.png)}
+
+.partner{background:url(partner.png)}
+
+.kids{background:url(kids.png)}
+
+.nokids{background:url(nokids.png)}
+
+.tangata input{
+  display:none;
+  margin:0;
+  padding:0;
+  -webkit-appearance:none;
+  -moz-appearance:none
+}
+
+.tangata input:active +.label{
+  opacity: .9;
+}
+
+.tangata input:checked +.label{
+  -webkit-filter: none;
+     -moz-filter: none;
+          filter: none
+}
+
+.label{
+  cursor:pointer;
+  background-size:contain;
+  background-repeat:no-repeat;
+  display:inline-block;
+  width:190px;height:190px;
+  -webkit-transition: all 120ms ease-in;
+     -moz-transition: all 120ms ease-in;
+          transition: all 120ms ease-in;
+  -webkit-filter: brightness(1.8) opacity(.4);
+     -moz-filter: brightness(1.8) opacity(.4);
+          filter: brightness(1.8) opacity(.4)
+}
+
+.label:hover{
+  width:200px;height:200px;
+  -webkit-filter: brightness(1.2) opacity(.7);
+     -moz-filter: brightness(1.2) opacity(.7);
+          filter: brightness(1.2) opacity(.7)
+}
