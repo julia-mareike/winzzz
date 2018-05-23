@@ -1,4 +1,5 @@
 import React from 'react'
+import Jobseeker from './Jobseeker'
 import Section from './Section'
 
 class App extends React.Component {
@@ -22,7 +23,7 @@ class App extends React.Component {
 
     return (
       <div className='app-container'>
-        <img className='jobseeker' src="face.png" alt="A nice face" />
+        <Jobseeker state={this.state} />
         <div className='tangata'>
           <Section name='relationship' id={['single', 'partner']} handleClick={this.handleClick} />
           <Section name='tamariki' id={['kids', 'nokids']} handleClick={this.handleClick} />

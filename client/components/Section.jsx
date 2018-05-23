@@ -2,7 +2,7 @@ import React from 'react'
 
 const Section = props => {
   return (
-    <div>
+    <div className='section'>
       {props.id.map((item, idx) => {
         return <p key={idx}>
           <input id={item} name={props.name} type='radio' value={item} onClick={props.handleClick} />
