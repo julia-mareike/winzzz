@@ -24,12 +24,12 @@ class App extends React.Component {
         <Section name='tamariki' id={['kids', 'nokids']} handleClick={this.handleClick} />
 
         {(this.state.relationship === 'partner' && this.state.tamariki === 'kids') &&
-          <Section name='partner' id={['partnerworking', 'partnernotworking']} handleClick={this.handleClick} />}
-          
+          <Section name='partner' id={['working', 'notworking']} handleClick={this.handleClick} />}
+
         {(this.state.relationship === 'single' && this.state.tamariki === 'nokids') &&
           <Section name='age' id={['under20', 'early20s', 'late20splus']} handleClick={this.handleClick} />}
 
-        {(this.state.age === 'under20s') &&
+        {(this.state.age === 'under20') &&
           <Section name='housing' id={['athome', 'awayfromhome']} handleClick={this.handleClick} />}
       </div>
     )
