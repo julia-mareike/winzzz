@@ -24,7 +24,7 @@ export const jobseeker = (state) => {
 }
 
 export const calculateAccommodation = (state) => {
-  let minimum = state.relationship
+  const minimum = state.relationship
     ? (state.parent
       ? (state.superVet
         ? 152
@@ -33,7 +33,7 @@ export const calculateAccommodation = (state) => {
     : (state.parent
       ? 107
       : 54)
-  let thresholds = state.relationship
+  const thresholds = state.relationship
     ? (state.parent
       ? [0, 305, 220, 160, 120]
       : [0, 235, 155, 105, 80])
@@ -43,8 +43,8 @@ export const calculateAccommodation = (state) => {
         : [0, 235, 155, 105, 80])
       : [0, 165, 105, 80, 70])
   const max = thresholds[state.area]
-  let board = ((state.costs * 0.62) - minimum) * 0.7
-  let rent = (state.costs - minimum) * 0.7
+  const board = ((state.costs * 0.62) - minimum) * 0.7
+  const rent = (state.costs - minimum) * 0.7
   return [checkMax(board, max), checkMax(rent, max)]
 }
 
