@@ -14,12 +14,7 @@ class Accommodation extends React.Component {
   }
 
   handleClick () {
-    const total = calculateAccommodation(this.state
-      // this.state.costs,
-      // this.state.area,
-      // this.state.relationship,
-      // this.state.parent
-    )
+    const total = calculateAccommodation(this.state)
     this.setState({
       board: total[0],
       rent: total[1]
@@ -38,8 +33,9 @@ class Accommodation extends React.Component {
   render () {
     return (
       <div>
-        <input type='number' name='costs' placeholder='Accommodation costs' onChange={this.handleChange}/>
+        <input type='number' name='costs' placeholder='$' onChange={this.handleChange}/>
         <div className='areas'>
+          <a href='https://www.msd.govt.nz/about-msd-and-our-work/newsroom/2017/budget-2017/new-regions.html'>What area am I in?</a>
           <Section name='area' id={[1, 2, 3, 4]} handleClick={this.handleChange} />
         </div>
         <div>

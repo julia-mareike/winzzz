@@ -3,8 +3,8 @@ import React from 'react'
 const Section = props => {
   return (
     <div className='section'>
-      {props.id.map((item, idx) => {
-        return <p key={idx}>
+      {props.id.map(item => {
+        return <p key={item}>
           <input id={item} name={props.name} type='radio' value={item} onClick={props.handleClick} />
           <label className={`label ${item}`} htmlFor={item}></label>
         </p>

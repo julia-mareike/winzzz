@@ -24,18 +24,21 @@
           filter: none
 }
 
-.tangata label{
+.label{
   cursor:pointer;
   background-size:contain;
   background-repeat:no-repeat;
   display:inline-flex;
-  width:190px;height:190px;
   -webkit-transition: all 120ms ease-in;
      -moz-transition: all 120ms ease-in;
           transition: all 120ms ease-in;
   -webkit-filter: brightness(1.8) opacity(.4);
      -moz-filter: brightness(1.8) opacity(.4);
           filter: brightness(1.8) opacity(.4)
+}
+
+.tangata label{
+  width:190px;height:190px;
 }
 
 .label:hover{
@@ -45,8 +48,8 @@
           filter: brightness(1.2) opacity(.7)
 }
 
-.jobseeker {width:200px;height:200px}
-.single {background:url(single.png)}
+.face{width:200px;height:200px}
+.single{background:url(single.png)}
 .partner{background:url(partner.png)}
 .kids{background:url(kids.png)}
 .nokids{background:url(nokids.png)}
