@@ -1,6 +1,8 @@
 import React from 'react'
+import {Link, Route} from 'react-router-dom'
+
 import Jobseeker from './Jobseeker'
-import Section from './Section'
+import Accommodation from './Accommodation'
 
 class App extends React.Component {
   constructor (props) {
@@ -8,35 +10,26 @@ class App extends React.Component {
     this.state = {
 
     }
-    this.handleClick = this.handleClick.bind(this)
+    // this.handleClick = this.handleClick.bind(this)
   }
 
-  handleClick (e) {
-    this.setState({
-      [e.target.name]: e.target.value
-    })
-  }
+  // handleClick (e) {
+  //   this.setState({
+  //     [e.target.name]: e.target.value
+  //   })
+  // }
 
   render () {
-    const singleNoKids = this.state.relationship === 'single' && this.state.tamariki === 'nokids'
-    const partnerAndKids = this.state.relationship === 'partner' && this.state.tamariki === 'kids'
-
     return (
       <div className='app-container'>
-        <Jobseeker state={this.state} />
-        <div className='tangata'>
-          <Section name='relationship' id={['single', 'partner']} handleClick={this.handleClick} />
-          <Section name='tamariki' id={['kids', 'nokids']} handleClick={this.handleClick} />
-
-          {partnerAndKids &&
-          <Section name='partner' id={['working', 'notworking']} handleClick={this.handleClick} />}
-
-          {singleNoKids &&
-          <Section name='age' id={['under20', 'early20s', 'late20splus']} handleClick={this.handleClick} />}
-
-          {(singleNoKids && this.state.age === 'under20') &&
-          <Section name='housing' id={['athome', 'awayfromhome']} handleClick={this.handleClick} />}
-        </div>
+        <Link to='/accommodation'>
+          <input type='button' value='Accommodation Supplement' />
+        </Link>
+        <Link to='/jobseeker'>
+          <input type='button' value='Jobseeker' />
+        </Link>
+        <Route path='/jobseeker' component={Jobseeker} />
+        <Route path='/accommodation' component={Accommodation} />
       </div>
     )
   }
