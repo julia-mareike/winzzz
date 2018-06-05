@@ -15,7 +15,7 @@
 }
 
 .tangata input:active +.label{
-  opacity: .9;
+  opacity: .9
 }
 
 .tangata input:checked +.label{
@@ -24,7 +24,7 @@
           filter: none
 }
 
-.label{
+.tangata label{
   cursor:pointer;
   background-size:contain;
   background-repeat:no-repeat;

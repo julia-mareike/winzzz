@@ -1,4 +1,6 @@
 import React from 'react'
+import Section from './Section'
+
 import {calculateAccommodation} from '../utils'
 
 class Accommodation extends React.Component {
@@ -12,24 +14,27 @@ class Accommodation extends React.Component {
   }
 
   handleClick () {
-    const total = calculateAccommodation(this.state.costs)
+    const total = calculateAccommodation(this.state.costs, this.state.area)
     this.setState({
       board: total[0],
       rent: total[1]
     })
   }
 
-  handleChange (e) {
+  handleChange ({target}) {
     this.setState({
-      costs: Number(e.target.value)
+      [target.name]: Number(target.value)
     })
   }
 
   render () {
     return (
       <div>
-        <input type='number' onChange={this.handleChange}/>
-        <input type='button' value='Acommodation Supplement' onClick={this.handleClick}/>
+        <div>
+          <Section name='area' id={[1, 2, 3, 4]} handleClick={this.handleChange} />
+        </div>
+        <input type='number' name='costs' onChange={this.handleChange}/>
+        <input type='button' value='Accommodation Supplement' onClick={this.handleClick}/>
         <p>Board: ${this.state.board}</p>
         <p>Rent: ${this.state.rent}</p>
       </div>
