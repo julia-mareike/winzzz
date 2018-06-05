@@ -26,7 +26,9 @@ class Jobseeker extends React.Component {
     return (
       <div>
         <img className='jobseeker' src="face.png" alt="A nice face" />
-        {entitlement}
+        <div>
+          {entitlement}
+        </div>
         <div className='tangata'>
           <Section name='relationship' id={['single', 'partner']} handleClick={this.handleClick} />
           <Section name='tamariki' id={['kids', 'nokids']} handleClick={this.handleClick} />
