@@ -25,16 +25,19 @@ export const jobseeker = (state) => {
   return jobseeker
 }
 
-export const calculateAccommodation = (total, area, single = true) => {
-  const minimum = single ? 54 : 90
+export const calculateAccommodation = (total, area, relationship = false) => {
+  const minimum = relationship ? 90 : 54
+  const thresholds = relationship
+    ? [0, 235, 155, 105, 80]
+    : [0, 165, 105, 80, 70]
+  const max = thresholds[area]
   let board = ((total * 0.62) - minimum) * 0.7
   let rent = (total - minimum) * 0.7
-  return [checkMax(board, area), checkMax(rent, area)]
+  return [checkMax(board, max), checkMax(rent, max)]
 }
 
-const checkMax = (cost, area) => {
-  const thresholds = [0, 165, 105, 80, 70]
-  const max = thresholds[area]
+const checkMax = (cost, max) => {
   cost = cost > max ? max : Math.ceil(cost)
+  cost = isNaN(cost) ? '' : cost
   return cost
 }

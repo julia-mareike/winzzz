@@ -14,7 +14,11 @@ class Accommodation extends React.Component {
   }
 
   handleClick () {
-    const total = calculateAccommodation(this.state.costs, this.state.area)
+    const total = calculateAccommodation(
+      this.state.costs,
+      this.state.area,
+      this.state.relationship
+    )
     this.setState({
       board: total[0],
       rent: total[1]
@@ -22,21 +26,31 @@ class Accommodation extends React.Component {
   }
 
   handleChange ({target}) {
+    const value = target.type === 'checkbox'
+      ? target.checked
+      : Number(target.value)
     this.setState({
-      [target.name]: Number(target.value)
+      [target.name]: value
     })
   }
 
   render () {
     return (
       <div>
-        <div>
+        <input type='number' name='costs' placeholder='Accommodation costs' onChange={this.handleChange}/>
+        <div className='areas'>
           <Section name='area' id={[1, 2, 3, 4]} handleClick={this.handleChange} />
         </div>
-        <input type='number' name='costs' onChange={this.handleChange}/>
-        <input type='button' value='Accommodation Supplement' onClick={this.handleClick}/>
+        <div>
+          <input type='checkbox' name='relationship' defaultChecked={false} onChange={this.handleChange} />
+        In a relationship
+        </div>
+        <input type='button' value='Calculate' onClick={this.handleClick}/>
         <p>Board: ${this.state.board}</p>
         <p>Rent: ${this.state.rent}</p>
+        <p>What's the difference between board and rent?</p>
+        <p>Am I eligible for the accommodation supplement?</p>
+        <p>Am I in a relationship?</p>
       </div>
     )
   }
