@@ -24,9 +24,9 @@ class Jobseeker extends React.Component {
     const partnerAndKids = this.state.relationship === 'partner' && this.state.tamariki === 'kids'
 
     return (
-      <div>
-        <img className='jobseeker' src="face.png" alt="A nice face" />
-        <div>
+      <div className='jobseeker'>
+        <img className='face' src="face.png" alt="A nice face" />
+        <div className='entitlement'>
           {entitlement}
         </div>
         <div className='tangata'>

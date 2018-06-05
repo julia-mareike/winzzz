@@ -45,12 +45,41 @@ class Accommodation extends React.Component {
           <input type='checkbox' name='relationship' defaultChecked={false} onChange={this.handleChange} />
         In a relationship
         </div>
+        <div>
+          <input type='checkbox' name='parent' defaultChecked={false} onChange={this.handleChange} />
+        Parent
+        </div>
+        {(!this.state.relationship && this.state.parent) &&
+            <div>
+              <input type='checkbox' name='children' defaultChecked={false} onChange={this.handleChange} />
+              2 or more children
+            </div>
+        }
+        {(this.state.relationship && this.state.parent) &&
+            <div>
+              <input type='checkbox' name='superVet' defaultChecked={false} onChange={this.handleChange} />
+              NZ Super or Veteran's Pension
+            </div>
+        }
         <input type='button' value='Calculate' onClick={this.handleClick}/>
         <p>Board: ${this.state.board}</p>
         <p>Rent: ${this.state.rent}</p>
-        <p>What's the difference between board and rent?</p>
-        <p>Am I eligible for the accommodation supplement?</p>
-        <p>Am I in a relationship?</p>
+        <details>
+          <summary>What's the difference between board and rent?</summary>
+          <p>WINZ calculates <strong>board</strong> as consisting of 62% rent and 38% food & expenses, so will only recognise 62% of your accommodation costs.</p>
+          <p><strong>Rent</strong> is 100% rent and does not include any expenses like food, power, water rates etc.</p>
+        </details>
+        <details>
+          <summary>Am I eligible for accommodation supplement?</summary>
+          <p>Accommodation supplement isn't affected by how much you earn, but by how much savings you have - this must be under $8000.</p>
+          <p>You don't have to be receiving a benefit to get the accommodation supplement.</p>
+          <p>Accommodation supplement can't be used to pay for social housing properties (i.e. Housing NZ), but can be used for mortgage repayments. </p>
+        </details>
+        <details>
+          <summary>Am I in a relationship?</summary>
+          <p>"A relationship in the nature of marriage or a relationship in the nature of a civil union is a forseeable relationship in which there is at the very
+          least financial interdependence and emotional commitment for the future, like a married couple."</p>
+        </details>
       </div>
     )
   }
