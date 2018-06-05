@@ -22,3 +22,9 @@ export const jobseeker = (state) => {
 
   return jobseeker
 }
+
+export const calculateAccommodation = (total) => {
+  const board = ((total * 0.62) - 54) * 0.7
+  const rent = (total - 54) * 0.7
+  return [Math.ceil(board), Math.ceil(rent)]
+}
