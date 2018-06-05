@@ -14,10 +14,11 @@ class Accommodation extends React.Component {
   }
 
   handleClick () {
-    const total = calculateAccommodation(
-      this.state.costs,
-      this.state.area,
-      this.state.relationship
+    const total = calculateAccommodation(this.state
+      // this.state.costs,
+      // this.state.area,
+      // this.state.relationship,
+      // this.state.parent
     )
     this.setState({
       board: total[0],

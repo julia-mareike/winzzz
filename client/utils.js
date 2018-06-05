@@ -25,14 +25,28 @@ export const jobseeker = (state) => {
   return jobseeker
 }
 
-export const calculateAccommodation = (total, area, relationship = false) => {
-  const minimum = relationship ? 90 : 54
-  const thresholds = relationship
-    ? [0, 235, 155, 105, 80]
-    : [0, 165, 105, 80, 70]
-  const max = thresholds[area]
-  let board = ((total * 0.62) - minimum) * 0.7
-  let rent = (total - minimum) * 0.7
+export const calculateAccommodation = (state) => {
+  let minimum = state.relationship
+    ? (state.parent
+      ? (state.superVet
+        ? 152
+        : 119)
+      : 90)
+    : (state.parent
+      ? 107
+      : 54)
+  let thresholds = state.relationship
+    ? (state.parent
+      ? [0, 305, 220, 160, 120]
+      : [0, 235, 155, 105, 80])
+    : (state.parent
+      ? (state.children
+        ? [0, 305, 200, 160, 120]
+        : [0, 235, 155, 105, 80])
+      : [0, 165, 105, 80, 70])
+  const max = thresholds[state.area]
+  let board = ((state.costs * 0.62) - minimum) * 0.7
+  let rent = (state.costs - minimum) * 0.7
   return [checkMax(board, max), checkMax(rent, max)]
 }
 
