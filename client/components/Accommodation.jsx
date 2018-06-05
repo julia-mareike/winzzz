@@ -35,8 +35,8 @@ class Accommodation extends React.Component {
       <div>
         <input type='number' name='costs' placeholder='$' onChange={this.handleChange}/>
         <div className='areas'>
-          <a href='https://www.msd.govt.nz/about-msd-and-our-work/newsroom/2017/budget-2017/new-regions.html'>What area am I in?</a>
           <Section name='area' id={[1, 2, 3, 4]} handleClick={this.handleChange} />
+          <a href='https://www.msd.govt.nz/about-msd-and-our-work/newsroom/2017/budget-2017/new-regions.html'>What area am I in?</a>
         </div>
         <div>
           <input type='checkbox' name='relationship' defaultChecked={false} onChange={this.handleChange} />

@@ -1,27 +1,25 @@
 export const jobseeker = (state) => {
-  let jobseeker = 'Jobseeker!'
   const kids = state.tamariki === 'kids'
   const single = state.relationship === 'single'
   const working = state.partner === 'working'
   const athome = state.housing === 'athome' && state.age === 'under20'
   const late20splus = state.age === 'late20splus'
 
-  if (kids) {
-    if (!single) {
-      if (working) {
-        jobseeker = '205.60'
-      } else jobseeker = '384.50 / couple'
-    } else jobseeker = '334.05'
-  } else if (single) {
-    if (athome) {
-      jobseeker = '143.55'
-    } else if (late20splus) {
-      jobseeker = '215.34'
-    } else jobseeker = '179.44'
-  } else jobseeker = '358.88 / couple'
-  if (!state.relationship) {
-    jobseeker = 'Jobseeker!'
-  }
+  const jobseeker = state.relationship
+    ? kids
+      ? single
+        ? 334.05
+        : working
+          ? '205.60'
+          : '384.50 / couple'
+      : single
+        ? athome
+          ? 143.55
+          : late20splus
+            ? 215.34
+            : 179.44
+        : '358.88 / couple'
+    : null
   return jobseeker
 }
 
@@ -41,7 +39,7 @@ export const calculateAccommodation = (state) => {
       : [0, 235, 155, 105, 80])
     : (state.parent
       ? (state.children
-        ? [0, 305, 200, 160, 120]
+        ? [0, 305, 220, 160, 120]
         : [0, 235, 155, 105, 80])
       : [0, 165, 105, 80, 70])
   const max = thresholds[state.area]
