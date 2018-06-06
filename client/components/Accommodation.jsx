@@ -24,7 +24,7 @@ class Accommodation extends React.Component {
   handleChange ({target}) {
     const value = target.type === 'checkbox'
       ? target.checked
-      : Number(target.value)
+      : target.value
     this.setState({
       [target.name]: value
     })
@@ -32,35 +32,42 @@ class Accommodation extends React.Component {
 
   render () {
     return (
-      <div>
-        <input type='number' name='costs' placeholder='$' onChange={this.handleChange}/>
+      <div className='accommodation'>
+        <img className='costs' src='costs.png' alt='Accommodation costs' />
+        <div>
+          <input type='number' name='costs' min='0' placeholder='$' onChange={this.handleChange}/>
+        </div>
+        <img className='area' src='area.png' alt='Area' />
         <div className='areas'>
-          <Section name='area' id={[1, 2, 3, 4]} handleClick={this.handleChange} />
+          <Section name='area' id={['a1', 'a2', 'a3', 'a4']} handleClick={this.handleChange} />
           <a href='https://www.msd.govt.nz/about-msd-and-our-work/newsroom/2017/budget-2017/new-regions.html'>What area am I in?</a>
         </div>
-        <div>
-          <input type='checkbox' name='relationship' defaultChecked={false} onChange={this.handleChange} />
-        In a relationship
+        <div className='checkboxes'>
+          <input type='checkbox' id='relationship' name='relationship' defaultChecked={false} onChange={this.handleChange} />
+          <label className='label relationship' htmlFor='relationship'></label>
         </div>
-        <div>
-          <input type='checkbox' name='parent' defaultChecked={false} onChange={this.handleChange} />
-        Parent
+        <div className='checkboxes'>
+          <input type='checkbox' id='parent' name='parent' defaultChecked={false} onChange={this.handleChange} />
+          <label className='label parent' htmlFor='parent'></label>
         </div>
+        {/* <Section name='accommodation' id={['relationship', 'parent']} handleClick={this.handleChange} /> */}
         {(!this.state.relationship && this.state.parent) &&
-            <div>
-              <input type='checkbox' name='children' defaultChecked={false} onChange={this.handleChange} />
-              2 or more children
+            <div className='checkboxes'>
+              <input type='checkbox' id='children' name='children' defaultChecked={false} onChange={this.handleChange} />
+              <label className='label children' htmlFor='children'></label>
             </div>
         }
         {(this.state.relationship && this.state.parent) &&
-            <div>
-              <input type='checkbox' name='superVet' defaultChecked={false} onChange={this.handleChange} />
-              NZ Super or Veteran's Pension
+            <div className='checkboxes'>
+              <input type='checkbox' id='superVet' name='superVet' defaultChecked={false} onChange={this.handleChange} />
+              <label className='label superVet' htmlFor='superVet'></label>
             </div>
         }
         <input type='button' value='Calculate' onClick={this.handleClick}/>
-        <p>Board: ${this.state.board}</p>
-        <p>Rent: ${this.state.rent}</p>
+        <div className='results'>
+          <p className='entitlement'>Board: ${this.state.board}</p>
+          <p className='entitlement'>Rent: ${this.state.rent}</p>
+        </div>
         <details>
           <summary>What's the difference between board and rent?</summary>
           <p>WINZ calculates <strong>board</strong> as consisting of 62% rent and 38% food & expenses, so will only recognise 62% of your accommodation costs.</p>
@@ -68,8 +75,8 @@ class Accommodation extends React.Component {
         </details>
         <details>
           <summary>Am I eligible for accommodation supplement?</summary>
-          <p>Accommodation supplement isn't affected by how much you earn, but by how much savings you have - this must be under $8000.</p>
           <p>You don't have to be receiving a benefit to get the accommodation supplement.</p>
+          <p>You need to have under $8000 cash assets to be eligible. If you aren't receiving a benefit, your entitlement will decrease when your income is higher than a certain threshold.</p>
           <p>Accommodation supplement can't be used to pay for social housing properties (i.e. Housing NZ), but can be used for mortgage repayments. </p>
         </details>
         <details>

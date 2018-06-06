@@ -34,6 +34,14 @@
   -moz-appearance:none
 }
 
+.checkboxes input{
+  display:none;
+  margin:0;
+  padding:0;
+  -webkit-appearance:none;
+  -moz-appearance:none
+}
+
 .areas input:active +.label{
   opacity: .9
 }
@@ -44,19 +52,25 @@
           filter: none
 }
 
-.tangata input:active +.label{
+input:active +.label{
   opacity: .9
 }
 
-.tangata input:checked +.label{
+input:checked +.label{
   -webkit-filter: none;
      -moz-filter: none;
           filter: none
 }
 
-.section{
-  display: flex;
+.checkboxes input:checked +.label{
+  -webkit-filter: none;
+  -moz-filter: none;
+       filter: none
 }
+
+/* .section{
+  display: flex;
+} */
 
 .label{
   cursor:pointer;
@@ -129,3 +143,7 @@ input[type=number] {
 .a2{background:url(2.png)}
 .a3{background:url(3.png)}
 .a4{background:url(4.png)}
+.relationship{background:url(relationship.png);width:330px;height:65px}
+.parent{background:url(parent.png);width:130px;height:50px}
+.children{background:url(children.png);width:350px;height:100px}
+.superVet{background:url(supervet.png);width:500px;height:100px}

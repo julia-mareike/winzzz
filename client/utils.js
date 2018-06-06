@@ -42,7 +42,7 @@ export const calculateAccommodation = (state) => {
         ? [0, 305, 220, 160, 120]
         : [0, 235, 155, 105, 80])
       : [0, 165, 105, 80, 70])
-  const max = thresholds[state.area]
+  const max = thresholds[state.area[1]]
   const board = ((state.costs * 0.62) - minimum) * 0.7
   const rent = (state.costs - minimum) * 0.7
   return [checkMax(board, max), checkMax(rent, max)]
