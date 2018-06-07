@@ -26,21 +26,21 @@ class Jobseeker extends React.Component {
     return (
       <div className='jobseeker'>
         <img className='face' src="face.png" alt="A nice face" />
-        <div className='entitlement'>
+        <p className='entitlement'>
           {entitlement}
-        </div>
+        </p>
         <div className='tangata'>
-          <Section name='relationship' id={['single', 'partner']} handleClick={this.handleClick} />
-          <Section name='tamariki' id={['kids', 'nokids']} handleClick={this.handleClick} />
+          <Section type='radio' name='relationship' id={['single', 'partner']} handleClick={this.handleClick} />
+          <Section type='radio' name='tamariki' id={['kids', 'nokids']} handleClick={this.handleClick} />
 
           {partnerAndKids &&
-          <Section name='partner' id={['working', 'notworking']} handleClick={this.handleClick} />}
+          <Section type='radio' name='partner' id={['working', 'notworking']} handleClick={this.handleClick} />}
 
           {singleNoKids &&
-          <Section name='age' id={['under20', 'early20s', 'late20splus']} handleClick={this.handleClick} />}
+          <Section type='radio' name='age' id={['under20', 'early20s', 'late20splus']} handleClick={this.handleClick} />}
 
           {(singleNoKids && this.state.age === 'under20') &&
-          <Section name='housing' id={['athome', 'awayfromhome']} handleClick={this.handleClick} />}
+          <Section type='radio' name='housing' id={['athome', 'awayfromhome']} handleClick={this.handleClick} />}
         </div>
       </div>
     )

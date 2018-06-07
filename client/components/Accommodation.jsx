@@ -35,33 +35,24 @@ class Accommodation extends React.Component {
       <div className='accommodation'>
         <img className='costs' src='costs.png' alt='Accommodation costs' />
         <div>
-          <input type='number' name='costs' min='0' placeholder='$' onChange={this.handleChange}/>
+          <input type='number' name='costs' min='0' placeholder='$ Costs' onChange={this.handleChange} />
         </div>
         <img className='area' src='area.png' alt='Area' />
         <div className='areas'>
-          <Section name='area' id={['a1', 'a2', 'a3', 'a4']} handleClick={this.handleChange} />
+          <Section name='area' type='radio' id={['a1', 'a2', 'a3', 'a4']} handleClick={this.handleChange} flex='row' />
           <a href='https://www.msd.govt.nz/about-msd-and-our-work/newsroom/2017/budget-2017/new-regions.html'>What area am I in?</a>
         </div>
-        <div className='checkboxes'>
-          <input type='checkbox' id='relationship' name='relationship' defaultChecked={false} onChange={this.handleChange} />
-          <label className='label relationship' htmlFor='relationship'></label>
-        </div>
-        <div className='checkboxes'>
-          <input type='checkbox' id='parent' name='parent' defaultChecked={false} onChange={this.handleChange} />
-          <label className='label parent' htmlFor='parent'></label>
-        </div>
-        {/* <Section name='accommodation' id={['relationship', 'parent']} handleClick={this.handleChange} /> */}
+        <Section name='nonbeneficiary' type='checkbox' flex='checkboxes' id={['nonbeneficiary']} handleClick={this.handleChange} />
+        {(this.state.nonbeneficiary) &&
+          <input type='number' name='income' min='0' placeholder='$ Income' onChange={this.handleChange} />
+        }
+        <Section name='relationship' type='checkbox' flex='checkboxes' id={['relationship']} handleClick={this.handleChange} />
+        <Section name='parent' type='checkbox' flex='checkboxes' id={['parent']} handleClick={this.handleChange} />
         {(!this.state.relationship && this.state.parent) &&
-            <div className='checkboxes'>
-              <input type='checkbox' id='children' name='children' defaultChecked={false} onChange={this.handleChange} />
-              <label className='label children' htmlFor='children'></label>
-            </div>
+          <Section name='children' type='checkbox' flex='checkboxes' id={['children']} handleClick={this.handleChange} />
         }
         {(this.state.relationship && this.state.parent) &&
-            <div className='checkboxes'>
-              <input type='checkbox' id='superVet' name='superVet' defaultChecked={false} onChange={this.handleChange} />
-              <label className='label superVet' htmlFor='superVet'></label>
-            </div>
+          <Section name='superVet' type='checkbox' flex='checkboxes' id={['superVet']} handleClick={this.handleChange} />
         }
         <input type='button' value='Calculate' onClick={this.handleClick}/>
         <div className='results'>
