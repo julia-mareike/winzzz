@@ -24,6 +24,18 @@ export const jobseeker = (state) => {
 }
 
 export const calculateAccommodation = (state) => {
+  const minimum = calculateMin(state)
+  const max = calculateMax(state)
+  const abatement = calculateAbatement(state)
+  const maxIncome = checkIncome(state)
+  const board = (((state.costs * 0.62) - minimum) * 0.7) - abatement
+  const rent = ((state.costs - minimum) * 0.7) - abatement
+  let result = [checkMax(board, max), checkMax(rent, max)]
+  result = maxIncome ? [0, 0] : result
+  return result
+}
+
+const calculateMin = (state) => {
   const minimum = state.relationship
     ? (state.parent
       ? (state.superVet
@@ -33,6 +45,10 @@ export const calculateAccommodation = (state) => {
     : (state.parent
       ? 107
       : 54)
+  return minimum
+}
+
+const calculateMax = (state) => {
   const thresholds = state.relationship
     ? (state.parent
       ? [0, 305, 220, 160, 120]
@@ -42,14 +58,43 @@ export const calculateAccommodation = (state) => {
         ? [0, 305, 220, 160, 120]
         : [0, 235, 155, 105, 80])
       : [0, 165, 105, 80, 70])
-  const max = thresholds[state.area[1]]
-  const board = ((state.costs * 0.62) - minimum) * 0.7
-  const rent = (state.costs - minimum) * 0.7
-  return [checkMax(board, max), checkMax(rent, max)]
+  const maximum = thresholds[state.area[1]]
+  return maximum
+}
+
+const calculateAbatement = (state) => {
+  const threshold = state.relationship
+    ? (state.parent
+      ? 630
+      : 593)
+    : (state.parent
+      ? 558
+      : 388)
+  let excess = (Number(state.income) - threshold) * 0.25
+  excess = excess > 0 ? excess : 0
+  return excess
+}
+
+const checkIncome = (state) => {
+  const thresholds = state.relationship
+    ? (state.parent
+      ? [0, 1850, 1510, 1270, 1110]
+      : [0, 1533, 1213, 1013, 913])
+    : (state.parent
+      ? (state.children
+        ? [0, 1778, 1438, 1198, 1038]
+        : [0, 1498, 1178, 978, 878])
+      : [0, 1048, 808, 708, 668])
+  const maximum = thresholds[state.area[1]]
+  return (state.income > maximum)
 }
 
 const checkMax = (cost, max) => {
-  cost = cost > max ? max : Math.ceil(cost)
+  cost = cost > 0
+    ? (cost > max
+      ? max
+      : Math.ceil(cost))
+    : 0
   cost = isNaN(cost) ? '' : cost
   return cost
 }
