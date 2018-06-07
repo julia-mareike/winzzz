@@ -33,7 +33,9 @@ class Accommodation extends React.Component {
   render () {
     return (
       <div className='accommodation'>
-        <img className='costs' src='costs.png' alt='Accommodation costs' />
+        {/* <img className='costs' src='costs.png' alt='Accommodation costs' /> */}
+        <img src='accommodation.png' alt='Accommodation' />
+        <img src='cost.png' alt='costs' />
         <div>
           <input type='number' name='costs' min='0' placeholder='$ Costs' onChange={this.handleChange} />
         </div>

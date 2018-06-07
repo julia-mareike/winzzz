@@ -26,9 +26,11 @@ class Jobseeker extends React.Component {
     return (
       <div className='jobseeker'>
         <img className='face' src="face.png" alt="A nice face" />
-        <p className='entitlement'>
-          {entitlement}
-        </p>
+        <div className='results'>
+          <p className='entitlement'>
+            {entitlement}
+          </p>
+        </div>
         <div className='tangata'>
           <Section type='radio' name='relationship' id={['single', 'partner']} handleClick={this.handleClick} />
           <Section type='radio' name='tamariki' id={['kids', 'nokids']} handleClick={this.handleClick} />
