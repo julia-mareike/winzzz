@@ -103,6 +103,11 @@ input[type=number] {
   align-self: center;    
 }
 
+input:focus::-webkit-input-placeholder { color:transparent }
+input:focus:-moz-placeholder { color:transparent }
+input:focus::-moz-placeholder { color:transparent }
+input:focus:-ms-input-placeholder { color:transparent }
+
 .single{background:url(single.png)}
 .partner{background:url(partner.png)}
 .kids{background:url(kids.png)}
