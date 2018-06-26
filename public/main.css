@@ -17,6 +17,15 @@
   flex-direction: column;  
 }
 
+.column{
+  display: flex;
+  align-items: center
+  /* flex-direction: column;  */
+}
+
+.align{
+  align-items: center;
+}
 .areas{
   display: flex;
   justify-content: center;
@@ -127,4 +136,4 @@ input:focus:-ms-input-placeholder { color:transparent }
 .parent{background:url(parent.png);width:130px;height:50px}
 .children{background:url(children.png);width:280px;height:80px}
 .superVet{background:url(supervet.png);width:390px;height:80px}
-.nonbeneficiary{background:url(face.png);width:100px;height:100px}
+.nonbeneficiary{background:url(nonbeneficiary.png);width:300px;height:60px}

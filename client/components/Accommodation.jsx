@@ -37,19 +37,32 @@ class Accommodation extends React.Component {
         {/* <img className='costs' src='costs.png' alt='Accommodation costs' /> */}
         <img src='accommodation.png' alt='Accommodation' />
         <img src='cost.png' alt='costs' />
-        <div>
+        <div className='align'>
           <input type='number' name='costs' min='0' placeholder='$ Costs' onChange={this.handleChange} />
+          <img src='q.png' alt='Info' />
         </div>
         <img className='area' src='area.png' alt='Area' />
         <div className='areas'>
           <Section name='area' type='radio' id={['a1', 'a2', 'a3', 'a4']} handleClick={this.handleChange} flex='row' />
-          <a href='https://www.msd.govt.nz/about-msd-and-our-work/newsroom/2017/budget-2017/new-regions.html'>What area am I in?</a>
+          <div className='column'>
+            <a target='_blank' rel='noopener noreferrer' href='https://www.msd.govt.nz/about-msd-and-our-work/newsroom/2017/budget-2017/new-regions.html'>What area am I in?</a>
+            <img src='q.png' alt='Info' />
+          </div>
+          <div className='align'>
+            <input type='number' name='assets' min='0' placeholder='$ Assets' onChange={this.handleChange} />
+            <img src='q.png' alt='Info' />
+          </div>
         </div>
         <Section name='nonbeneficiary' type='checkbox' flex='checkboxes' id={['nonbeneficiary']} handleClick={this.handleChange} />
         {(this.state.nonbeneficiary) &&
-          <input type='number' name='income' min='0' placeholder='$ Income' onChange={this.handleChange} />
+          <div>
+            <input type='number' name='income' min='0' placeholder='$ Income' onChange={this.handleChange} />
+            <img src='q.png' alt='Info' />
+          </div>
         }
-        <Section name='relationship' type='checkbox' flex='checkboxes' id={['relationship']} handleClick={this.handleChange} />
+        <div className='align'>
+          <Section name='relationship' type='checkbox' flex='checkboxes' id={['relationship']} handleClick={this.handleChange} />
+        </div>
         <Section name='parent' type='checkbox' flex='checkboxes' id={['parent']} handleClick={this.handleChange} />
         {(!this.state.relationship && this.state.parent) &&
           <Section name='children' type='checkbox' flex='checkboxes' id={['children']} handleClick={this.handleChange} />

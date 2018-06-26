@@ -86,7 +86,30 @@ const checkIncome = (state) => {
         : [0, 1498, 1178, 978, 878])
       : [0, 1048, 808, 708, 668])
   const maximum = thresholds[state.area[1]]
-  return (state.income > maximum)
+  const assets = checkAssets(state)
+  // check assets > assetLimit
+  // const maxAssets =
+  const maxIncome = (Number(state.income) + assets) > maximum
+  // return (maxIncome && maxAssets)
+  console.log(maxIncome, (Number(state.income) + assets))
+  return (maxIncome)
+}
+
+const checkAssets = (state) => {
+  const assetLimit = state.relationship
+    ? [5400, 16200]
+    : (state.parent
+      ? [5400, 16200]
+      : [2700, 8100])
+  console.log(assetLimit)
+  const assets = state.assets > assetLimit[0] // high enough to affect income
+    ? (state.assets > assetLimit[1] // higher than max assets
+      ? assetLimit[1] // return maximum or max out limit
+      : (state.assets - assetLimit[0]) * 0.25 // calculate difference --> state.assets - assetLimit[0] * 0.25 (25 cents per dollar)
+    )
+    : 0 // no difference
+  console.log(assets, typeof assets)
+  return assets
 }
 
 const checkMax = (cost, max) => {
